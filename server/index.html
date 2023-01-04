@@ -1,0 +1,84 @@
+<!doctype html>
+<html ng-app="zombeez">
+	<head>
+		<meta charset="UTF-8">
+		<title>Zombeez Scores</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    	<script src="hello.js"></script>
+	</head>
+	<style>
+		body {
+			/* background-image: url("bg.jpeg"); */
+			background-size: cover; 
+			background-color: #cccccc;
+		}
+
+		.row {
+		display: flex;
+		}
+
+		.column {
+		flex: 50%;
+		}
+	</style>
+		
+
+	<body>
+		<div class="row">
+
+		<div class="column">
+
+			<div ng-controller="Today">
+				<H3>TODAY</H3>
+				<p>1. {{today.Scores[0].playerName}} - {{today.Scores[0].score | number : fractionSize }}</p>
+				<p>2. {{today.Scores[1].playerName}} - {{today.Scores[1].score | number : fractionSize }}</p>
+				<p>3. {{today.Scores[2].playerName}} - {{today.Scores[2].score | number : fractionSize }}</p>
+			</div>
+			
+			<div ng-controller="Yesterday">
+				<H3>YESTERDAY</H3>
+				<p>1. {{yesterday.Scores[0].playerName}} - {{yesterday.Scores[0].score | number : fractionSize }}</p>
+				<p>2. {{yesterday.Scores[1].playerName}} - {{yesterday.Scores[1].score | number : fractionSize }}</p>
+				<p>3. {{yesterday.Scores[2].playerName}} - {{yesterday.Scores[2].score | number : fractionSize }}</p>
+			</div>
+
+			<div ng-controller="Weekly">
+				<H3>WEEKLY</H3>
+				<p>1. {{weekly.Scores[0].playerName}} - {{weekly.Scores[0].score | number : fractionSize}}</p>
+				<p>2. {{weekly.Scores[1].playerName}} - {{weekly.Scores[1].score | number : fractionSize}}</p>
+				<p>3. {{weekly.Scores[2].playerName}} - {{weekly.Scores[2].score | number : fractionSize}}</p>
+			</div>
+
+		</div>
+
+		<div class="column">
+
+
+			<div ng-controller="Tally" title="5pts for 1st, 3 for 2nd, 2 for 3rd and 1 for participation.  Weekly is worth double.">
+				<H3>TWO WEEK TALLY</H3>
+				<p>1. {{tally[0].playerName}} - {{tally[0].score | number : fractionSize}}</p>
+				<p>2. {{tally[1].playerName}} - {{tally[1].score | number : fractionSize}}</p>
+				<p>3. {{tally[2].playerName}} - {{tally[2].score | number : fractionSize}}</p>
+			</div>
+
+			<div ng-controller="Coolpoints" title="Scores with 420 or 69 in them">
+				<H3>COOL POINTS</H3>
+				<p>1. {{coolpoints[0].playerName}} - {{coolpoints[0].coolpoints | number : fractionSize}}</p>
+				<p>2. {{coolpoints[1].playerName}} - {{coolpoints[1].coolpoints | number : fractionSize}}</p>
+				<p>3. {{coolpoints[2].playerName}} - {{coolpoints[2].coolpoints | number : fractionSize}}</p>
+			</div>
+
+
+			<div>
+				<H3>LIFE TIME ACHIEVERS</H3>
+				<p ng-controller="High" title="Highest Score on any Daily or Weekly">&#128293; {{high.Scores[0].playerName}} - {{high.Scores[0].score | number : fractionSize }}</p>
+				<p ng-controller="Custom420" title="The Weed Seed">&#127807;	{{custom420.Scores[0].playerName}} - {{custom420.Scores[0].score | number : fractionSize }}</p>
+				<p ng-controller="Custom69" title="The Sexy Seed">&#127825; {{custom69.Scores[0].playerName}} - {{custom69.Scores[0].score | number : fractionSize }}</p>
+			</div>
+
+
+		</div>
+		</div>
+
+	</body>
+</html>
