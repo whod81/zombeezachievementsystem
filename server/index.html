@@ -30,9 +30,8 @@
 
 			<div ng-controller="Today">
 				<H3>TODAY</H3>
-				<p>1. {{today.Scores[0].playerName}} - {{today.Scores[0].score | number : fractionSize }}</p>
-				<p>2. {{today.Scores[1].playerName}} - {{today.Scores[1].score | number : fractionSize }}</p>
-				<p>3. {{today.Scores[2].playerName}} - {{today.Scores[2].score | number : fractionSize }}</p>
+				<!-- this can be done by iterating over the length of the array -->
+				<li ng-repeat="n in today.Scores.length">{{today.Scores[n].playerName}} - {{today.Scores[n].score | number : fractionSize }}</li>
 			</div>
 			
 			<div ng-controller="Yesterday">
