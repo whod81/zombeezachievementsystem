@@ -72,8 +72,8 @@ func main() {
 	router.GET("/high", returnHighScore)
 	router.GET("/tally", returnTallyBoard)
 	router.GET("/coolpoints", returnCoolBoard)
-	router.GET("/custom420420", return420)
-	router.GET("/custom696969", return69)
+	router.GET("/custom420", return420)
+	router.GET("/custom69", return69)
 
 	router.Static("/server", "./server")
 
