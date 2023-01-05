@@ -16,7 +16,7 @@ angular.module('zombeez', [])
             $scope.tally = data;
         });
     }).controller('Coolpoints', function ($scope, dataService) {
-        dataService.getData('yesterdcoolpointsay').then(function (data) {
+        dataService.getData('coolpoints').then(function (data) {
             $scope.coolpoints = data;
         });
     }).controller('Custom420', function ($scope, dataService) {
