@@ -1,24 +1,42 @@
 angular.module('zombeez', [])
     .controller('Today', function ($scope, dataService) {
-        $scope.today = dataService.getData('today');
+        dataService.getData('today').then(function (data) {
+            $scope.today = data;
+        });
     }).controller('Yesterday', function ($scope, dataService) {
-        $scope.yesterday = dataService.getData('yesterday');
+        dataService.getData('yesterday').then(function (data) {
+            $scope.yesterday = data;
+        });
     }).controller('Weekly', function ($scope, dataService) {
-        $scope.weekly = dataService.getData('weekly');
+        dataService.getData('weekly').then(function (data) {
+            $scope.weekly = data;
+        });
     }).controller('Tally', function ($scope, dataService) {
-        $scope.tally = dataService.getData('tally');
+        dataService.getData('tally').then(function (data) {
+            $scope.tally = data;
+        });
     }).controller('Coolpoints', function ($scope, dataService) {
-        $scope.coolpoints = dataService.getData('coolpoints');
+        dataService.getData('yesterdcoolpointsay').then(function (data) {
+            $scope.coolpoints = data;
+        });
     }).controller('Custom420', function ($scope, dataService) {
-        $scope.custom420 = dataService.getData('custom420');
+        dataService.getData('custom420').then(function (data) {
+            $scope.custom420 = data;
+        });
     }).controller('Custom69', function ($scope, dataService) {
-        $scope.custom69 = dataService.getData('custom69');
+        dataService.getData('custom69').then(function (data) {
+            $scope.custom69 = data;
+        });
     }).controller('High', function ($scope, dataService) {
-        $scope.high = dataService.getData('high');
+        dataService.getData('high').then(function (data) {
+            $scope.high = data;
+        });
     }).factory('dataService', function ($http) {
         return {
             getData: function (params) {
-                return $http.get('https://butts69420.com/' + params);
+                return $http.get('https://butts69420.com/' + params).then(function (response) {
+                    return response.data;
+                })
             }
         };
     });
