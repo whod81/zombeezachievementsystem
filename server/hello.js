@@ -1,33 +1,26 @@
 angular.module('zombeez', [])
-    .controller('Today', function ($scope, dataService) {
+    .controller("main", function($scope, dataService) {
         dataService.getData('today').then(function (data) {
             $scope.today = data;
         });
-    }).controller('Yesterday', function ($scope, dataService) {
         dataService.getData('yesterday').then(function (data) {
             $scope.yesterday = data;
         });
-    }).controller('Weekly', function ($scope, dataService) {
         dataService.getData('weekly').then(function (data) {
             $scope.weekly = data;
         });
-    }).controller('Tally', function ($scope, dataService) {
         dataService.getData('tally').then(function (data) {
             $scope.tally = data;
         });
-    }).controller('Coolpoints', function ($scope, dataService) {
         dataService.getData('yesterdcoolpointsay').then(function (data) {
             $scope.coolpoints = data;
         });
-    }).controller('Custom420', function ($scope, dataService) {
         dataService.getData('custom420').then(function (data) {
             $scope.custom420 = data;
         });
-    }).controller('Custom69', function ($scope, dataService) {
         dataService.getData('custom69').then(function (data) {
             $scope.custom69 = data;
         });
-    }).controller('High', function ($scope, dataService) {
         dataService.getData('high').then(function (data) {
             $scope.high = data;
         });

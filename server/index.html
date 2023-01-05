@@ -25,70 +25,75 @@
 
 
 <body>
-	<div class="row">
+	<div ng-controller="main">
+		<div class="row">
 
-		<div class="column">
+			<div class="column">
 
-			<div ng-controller="Today">
-				<H3>TODAY</H3>
-				<!-- this can be done by iterating over the length of the array -->
-				<ol>
-					<li ng-repeat="n in today.Scores.length">{{today.Scores[n].playerName}} - {{today.Scores[n].score |
-						number : fractionSize }}</li>
-				</ol>
+				<div>
+					<H3>TODAY</H3>
+					User ID{{today}}
+					<!-- this can be done by iterating over the length of the array -->
+					<ol>
+						<li ng-repeat="n in today.Scores.length">{{today.Scores[n].playerName}} -
+							{{today.Scores[n].score |
+							number : fractionSize }}</li>
+					</ol>
+				</div>
+
+				<div>
+					<H3>YESTERDAY</H3>
+					<ol>
+						<li ng-repeat="n in yesterday.Scores.length">{{yesterday.Scores[n].playerName}} -
+							{{yesterday.Scores[n].score | number : fractionSize }}</li>
+					</ol>
+				</div>
+
+				<div>
+					<H3>WEEKLY</H3>
+					<ol>
+						<li ng-repeat="n in weekly.Scores.length">{{weekly.Scores[n].playerName}} -
+							{{weekly.Scores[n].score
+							|
+							number : fractionSize }}</li>
+					</ol>
+				</div>
+
 			</div>
 
-			<div ng-controller="Yesterday">
-				<H3>YESTERDAY</H3>
-				<ol>
-					<li ng-repeat="n in yesterday.Scores.length">{{yesterday.Scores[n].playerName}} -
-						{{yesterday.Scores[n].score | number : fractionSize }}</li>
-				</ol>
+			<div class="column">
+
+				<div title="5pts for 1st, 3 for 2nd, 2 for 3rd and 1 for participation.  Weekly is worth double.">
+					<H3>TWO WEEK TALLY</H3>
+					<ol>
+						<li ng-repeat="n in tally.length">{{tally[n].playerName}} - {{tally[n].score | number :
+							fractionSize
+							}}</li>
+					</ol>
+				</div>
+
+				<div title="Scores with 420 or 69 in them">
+					<H3>COOL POINTS</H3>
+					<ol>
+						<li ng-repeat="n in coolpoints.length">{{coolpoints[n].playerName}} - {{coolpoints[n].coolpoints
+							|
+							number : fractionSize }}</li>
+					</ol>
+				</div>
+
+				<div>
+					<H3>LIFE TIME ACHIEVERS</H3>
+					<p title="Highest Score on any Daily or Weekly">&#128293;
+						{{high.Scores[0].playerName}} - {{high.Scores[0].score | number : fractionSize }}</p>
+					<p title="The Weed Seed">&#127807; {{custom420.Scores[0].playerName}} -
+						{{custom420.Scores[0].score | number : fractionSize }}</p>
+					<p title="The Sexy Seed">&#127825; {{custom69.Scores[0].playerName}} -
+						{{custom69.Scores[0].score | number : fractionSize }}</p>
+				</div>
+
 			</div>
-
-			<div ng-controller="Weekly">
-				<H3>WEEKLY</H3>
-				<ol>
-					<li ng-repeat="n in weekly.Scores.length">{{weekly.Scores[n].playerName}} - {{weekly.Scores[n].score
-						|
-						number : fractionSize }}</li>
-				</ol>
-			</div>
-
-		</div>
-
-		<div class="column">
-
-			<div ng-controller="Tally"
-				title="5pts for 1st, 3 for 2nd, 2 for 3rd and 1 for participation.  Weekly is worth double.">
-				<H3>TWO WEEK TALLY</H3>
-				<ol>
-					<li ng-repeat="n in tally.length">{{tally[n].playerName}} - {{tally[n].score | number : fractionSize
-						}}</li>
-				</ol>
-			</div>
-
-			<div ng-controller="Coolpoints" title="Scores with 420 or 69 in them">
-				<H3>COOL POINTS</H3>
-				<ol>
-					<li ng-repeat="n in coolpoints.length">{{coolpoints[n].playerName}} - {{coolpoints[n].coolpoints |
-						number : fractionSize }}</li>
-				</ol>
-			</div>
-
-			<div>
-				<H3>LIFE TIME ACHIEVERS</H3>
-				<p ng-controller="High" title="Highest Score on any Daily or Weekly">&#128293;
-					{{high.Scores[0].playerName}} - {{high.Scores[0].score | number : fractionSize }}</p>
-				<p ng-controller="Custom420" title="The Weed Seed">&#127807; {{custom420.Scores[0].playerName}} -
-					{{custom420.Scores[0].score | number : fractionSize }}</p>
-				<p ng-controller="Custom69" title="The Sexy Seed">&#127825; {{custom69.Scores[0].playerName}} -
-					{{custom69.Scores[0].score | number : fractionSize }}</p>
-			</div>
-
 		</div>
 	</div>
-
 </body>
 
 </html>
