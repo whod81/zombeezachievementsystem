@@ -3,6 +3,12 @@ angular.module('zombeez', [])
         dataService.getData('today').then(function (data) {
             $scope.today = data;
         });
+
+        var setTimeOut = setInterval(function () {
+            dataService.getData('today').then(function (data) {
+                $scope.today = data;
+            });
+        }, 300000);
     }).controller('Yesterday', function ($scope, dataService) {
         dataService.getData('yesterday').then(function (data) {
             $scope.yesterday = data;
@@ -11,6 +17,12 @@ angular.module('zombeez', [])
         dataService.getData('weekly').then(function (data) {
             $scope.weekly = data;
         });
+
+        var setTimeOut = setInterval(function () {
+            dataService.getData('weekly').then(function (data) {
+                $scope.weekly = data;
+            });
+        }, 300000);
     }).controller('Tally', function ($scope, dataService) {
         dataService.getData('tally').then(function (data) {
             $scope.tally = data;

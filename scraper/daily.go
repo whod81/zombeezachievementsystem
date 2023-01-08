@@ -6,6 +6,8 @@ import (
 	"log"
 	"time"
 	"zombeez/constant"
+
+	"github.com/k0kubun/pp"
 )
 
 func WriteDaily(timeArg time.Time) (int, error) {
@@ -18,7 +20,7 @@ func WriteDaily(timeArg time.Time) (int, error) {
 	return i, err
 }
 
-func GetDaily(timeArg time.Time, cacheBool bool) ScoreBoard {
+func GetDaily(timeArg time.Time, useCache bool) ScoreBoard {
 	loc, err := time.LoadLocation(constant.TimeZone)
 	if err != nil {
 		log.Println(err)
@@ -27,7 +29,7 @@ func GetDaily(timeArg time.Time, cacheBool bool) ScoreBoard {
 	seed := getSeedFromDate("daily", timeArg)
 	var returnBoard ScoreBoard
 
-	if cacheBool {
+	if useCache {
 		cacheBoard := CheckCache("daily", seed, timeArg)
 		// log.Println("CACHE DATE: " + cacheBoard.CreatedDate.String())
 
@@ -110,10 +112,32 @@ func GetToday() ScoreBoard {
 
 	// Don't do an API call if the cache is within 2 minutes
 
-	if scoreBoard.CreatedDate.Add(2 * time.Minute).Before(scoreDate) {
+	if scoreBoard.CreatedDate.Add(2 * time.Second).Before(scoreDate) {
 		scoreBoard = GetDaily(scoreDate.In(loc), false)
-		MakeTallyBoard(DailyBoards, WeeklyBoards)
-		MakeCoolBoard(DailyBoards, WeeklyBoards)
+
+		if len(scoreBoard.Scores) != len(DailyBoards[seed].Scores) {
+			MakeTallyBoard(DailyBoards, WeeklyBoards)
+			MakeCoolBoard(DailyBoards, WeeklyBoards)
+		} else {
+			var oldBoardScore int
+			var newBoardScore int
+
+			for _, score := range scoreBoard.Scores {
+				newBoardScore = newBoardScore + score.Score
+			}
+
+			for _, score := range DailyBoards[seed].Scores {
+				oldBoardScore = oldBoardScore + score.Score
+			}
+
+			if newBoardScore != oldBoardScore {
+				MakeTallyBoard(DailyBoards, WeeklyBoards)
+				MakeCoolBoard(DailyBoards, WeeklyBoards)
+			} else {
+				pp.Println("No change found not updating boards.")
+			}
+
+		}
 	}
 
 	DailyBoards[seed] = scoreBoard

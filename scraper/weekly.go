@@ -28,7 +28,7 @@ func WriteWeekly(timeArg time.Time) (int, error) {
 	return i, err
 }
 
-func GetWeekly(timeArg time.Time, cacheBool bool) ScoreBoard {
+func GetWeekly(timeArg time.Time, useCache bool) ScoreBoard {
 	loc, err := time.LoadLocation(constant.TimeZone)
 	if err != nil {
 		log.Println(err)
@@ -39,7 +39,7 @@ func GetWeekly(timeArg time.Time, cacheBool bool) ScoreBoard {
 
 	sundayDate := getDateFromSeed("weekly", seed)
 
-	if cacheBool {
+	if useCache {
 
 		cacheBoard := CheckCache("weekly", seed, timeArg.In(loc))
 		//		log.Println("CACHE DATE: " + cacheBoard.CreatedDate.String())
