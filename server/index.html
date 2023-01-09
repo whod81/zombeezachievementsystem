@@ -75,7 +75,7 @@
 				title="5pts for 1st, 3 for 2nd, 2 for 3rd and 1 for participation.  Weekly is worth double.">
 				<H3>TWO WEEK TALLY</H3>
 				<ol>
-					<li ng-repeat="ps in tally | limitTo:5 ">{{ps.playerName}} - {{ps.score | number : fractionSize }}</li>
+					<li ng-repeat="ps in tally | limitTo:5 " title=" {{ ps.tally | json }} ">{{ps.playerName}} - {{ps.score | number : fractionSize }}</li>
 				</ol>
 			</div>
 
