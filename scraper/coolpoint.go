@@ -89,10 +89,15 @@ func coolPointPlayer(points int, playerID string, PlayerName string) {
 
 func returnCoolPoints(score int) int {
 	bs := []byte(strconv.Itoa(score))
+	coolpoints := 0
 
-	re := regexp.MustCompile(`1337|69|420`)
+	re := regexp.MustCompile(`1337|69|420|007|666`)
+	for _, value := range re.FindAll(bs, -1) {
+		coolpoints = coolpoints + len(value)
 
-	return len(re.FindAll(bs, -1))
+	}
+
+	return coolpoints
 }
 
 func FindHighCoolPoint(PlayerCoolBoards *CoolBoards) []CoolBoard {

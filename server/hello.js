@@ -39,6 +39,10 @@ angular.module('zombeez', [])
         dataService.getData('custom69').then(function (data) {
             $scope.custom69 = data;
         });
+    }).controller('Custom007', function ($scope, dataService) {
+        dataService.getData('custom007').then(function (data) {
+            $scope.custom007 = data;
+        });
     }).controller('High', function ($scope, dataService) {
         dataService.getData('high').then(function (data) {
             $scope.high = data;

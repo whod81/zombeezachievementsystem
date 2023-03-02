@@ -84,3 +84,26 @@ func Get69() ScoreBoard {
 	return scoreBoard
 
 }
+
+func Gett007() ScoreBoard {
+	scoreDate := time.Now()
+	var scoreBoard ScoreBoard
+
+	// This one is special so we're goign to check if there's a cache before grabbing it from the API
+	seed := "007007"
+	scoreBoard = CheckCache("custom", seed, time.Now())
+
+	log.Println("CACHE DATE: " + scoreBoard.CreatedDate.String())
+
+	// Don't do an API call if the cache is within 2 Hours
+
+	if scoreBoard.CreatedDate.Add(2 * time.Hour).Before(scoreDate) {
+		scoreBoard = GetCustom(seed)
+
+	}
+
+	log.Println(scoreBoard)
+
+	return scoreBoard
+
+}

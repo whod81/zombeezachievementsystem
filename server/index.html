@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title>Zombeez Scores</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-	<script src="hello.js"></script>
+	<script type="text/javascript"  src="hello.js?20230222"></script>
 </head>
 <style>
 	body {
@@ -79,7 +79,7 @@
 				</ol>
 			</div>
 
-			<div ng-controller="Coolpoints" title="Scores with 420 or 69 in them">
+			<div ng-controller="Coolpoints" title="Scores with 420, 69, 007, or 1337 in them">
 				<H3>COOL POINTS</H3>
 				<ol>
 					<li ng-repeat="ps in coolpoints | limitTo:5 ">{{ ps.playerName }} - {{ ps.coolpoints | number : fractionSize }} </li>
@@ -95,6 +95,9 @@
 						{{custom420.Scores[0].score | number : fractionSize }}</li>
 					<li ng-controller="Custom69" title="The Sexy Seed">&#127825; {{custom69.Scores[0].playerName}} -
 						{{custom69.Scores[0].score | number : fractionSize }}</li>
+					<li ng-controller="Custom007" title="The Spy Seed">&#128373; {{custom007.Scores[0].playerName}} -
+						{{custom007.Scores[0].score | number : fractionSize }}</li>
+	
 				</ol>
 			</div>
 
